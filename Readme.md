@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Vladimir Kuznetsov](https://up.htmlacademy.ru/javascript/27/user/1051973).
-* Наставник: `Сергей Рожков`.
+* Наставник: [Сергей =) Рожков](https://htmlacademy.ru/profile/id1069033).
 
 ---
 
