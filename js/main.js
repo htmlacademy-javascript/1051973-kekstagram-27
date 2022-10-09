@@ -13,24 +13,16 @@ maxNumber = Math.ceil(maxNumber);
   else {
     return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
   }
-
   }
-  const rndInt = getRandomIntFromInterval(3, 7)
-  console.log(rndInt);
-
+getRandomIntFromInterval(3, 7);
 
   function stringLength(inputTxt, maxLength)
 {
-			if(inputTxt.length > maxLength)
-			{
-			return false;
-			}
-			else
+			if(inputTxt.length < maxLength)
 			{
 			return true;
 			}
+
 }
-const inputTxt = 'dfdsfsdfsfsd';
-const maxLength = 20;
-const stringL = stringLength(inputTxt, maxLength);
-console.log(stringL);
+stringLength('Любой текст', 20);
+
