@@ -1,6 +1,14 @@
-
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 25;
 const MIN_PHOTO_NUMBER = 1;
 const PHOTO_OBJECTS_NUMBER = 25;
+const AVATAR_NUMBER = 6;
+const INPUT_TEXT = 'текст';
+const INPUT_TEXT_LENGTH = 20;
+const LIKES_MIN = 15;
+const LIKES_MAX = 200;
+const COMMENT_ID_MIN = 1;
+const COMMENT_ID_MAX = 2000;
 const DESCRIPTIONS = [
   'beach',
   'goToTheBeach',
@@ -53,52 +61,44 @@ const NAME = [
 ];
 
 
-function getRandomIntFromInterval(minNumber, maxNumber) {
-  if (minNumber < 0 || maxNumber < 0) {
+function getRandomIntFromInterval(min, max) {
+  if (min < 0 || max < 0) {
     return NaN;
   }
-minNumber = Math.floor(minNumber);
-maxNumber = Math.ceil(maxNumber);
- if (minNumber === maxNumber) {
-  return minNumber;
- }
- if (maxNumber > minNumber){
-    return Math.floor(Math.random() * (minNumber - maxNumber + 1) + maxNumber);
+  min = Math.floor(min);
+  max = Math.ceil(max);
+  if (min === max) {
+    return min;
   }
-  else {
-    return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
-  }
-  }
-
-
-  function stringLength(inputTxt, maxLength)
-{
-if(inputTxt.length < maxLength)
-{
-return true;
+  return min > max ? random(max, min) : random(min, max);
 }
 
+function random(min, max) {
+  return (Math.round(Math.random() * (max - min)) + min);
 }
-stringLength('Любой текст', 20);
+getRandomIntFromInterval(MIN_NUMBER, MAX_NUMBER);
+
+function stringLength(input, line) {
+  return !(input.length > line);
+}
+
+stringLength(INPUT_TEXT, INPUT_TEXT_LENGTH);
 
 
-
-
-
- function getPhoto(i) {
+function getPhoto(i) {
   return {
     id: i,
     url: `photos/${getRandomIntFromInterval(MIN_PHOTO_NUMBER, PHOTO_OBJECTS_NUMBER)}.jpg`,
     description: DESCRIPTIONS[getRandomIntFromInterval(0, DESCRIPTIONS.length - 1)],
-    likes: getRandomIntFromInterval(15,200),
+    likes: getRandomIntFromInterval(LIKES_MIN, LIKES_MAX),
     comments: {
-      id: getRandomIntFromInterval(15,1000),
-      avatar: `img/avatar-${getRandomIntFromInterval(1,6)}.svg`,
+      id: getRandomIntFromInterval(COMMENT_ID_MIN,COMMENT_ID_MAX),
+      avatar: `img/avatar-${getRandomIntFromInterval(1,AVATAR_NUMBER)}.svg`,
       message: COMMENTS[getRandomIntFromInterval(0, COMMENTS.length - 1)],
       name: NAME[getRandomIntFromInterval(0, NAME.length - 1)],
     },
-  }
- }
+  };
+}
 
 function getPhotosObjects(photoNumber) {
   const photosArray = [];
@@ -107,7 +107,4 @@ function getPhotosObjects(photoNumber) {
   }
   return photosArray;
 }
-
-
 console.log(getPhotosObjects (PHOTO_OBJECTS_NUMBER));
-
